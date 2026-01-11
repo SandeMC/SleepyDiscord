@@ -1,0 +1,36 @@
+/**
+* @name Sleepy Discord
+* @author GillianMC
+* @description Simple CSS to automatically dim non-hovered elements to prevent OLED burn-in
+* @source https://github.com/SandeMC/SleepyDiscord
+* @updateUrl https://raw.githubusercontent.com/SandeMC/SleepyDiscord/main/sleepyDiscord.theme.css
+* @authorId 248163371919081472
+* @version 1.0.0
+*/
+
+/* apply reduced opacity and grayscale */
+#app-mount:hover :is([class*="guilds"], [class*="subtitleContainer"], [class*="sidebar"], [class*="chatContent"], [class*="membersWrap"], [class*="bar"]):not(:hover) {
+    opacity: 0.7; 
+    transition: opacity 0.5s ease;
+    filter: grayscale(30%);
+}
+
+/* app unfocused, retain some opacity on chat */
+#app-mount:not(:hover) :is([class*="chatContent"]) {
+    opacity: 0.85; 
+    transition: opacity 0.5s ease;
+    filter: grayscale(30%);
+}
+
+/* app unfocused, reduce opacity on everything */
+#app-mount:not(:hover) :is([class*="guilds"], [class*="subtitleContainer"], [class*="sidebar"], [class*="membersWrap"], [class*="bar"]) {
+    opacity: 0.7; 
+    transition: opacity 0.5s ease;
+    filter: grayscale(30%);
+}
+
+/* element focused, return opacity */
+:is([class*="guilds"], [class*="sidebar"], [class*="subtitleContainer"], [class*="chatContent"], [class*="membersWrap"], [class*="bar"]) {
+    transition: opacity 0.1s ease;
+    filter: grayscale(0%);
+}
